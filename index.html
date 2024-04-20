@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Jersey 10', Arial, sans-serif;
+            font-size: 2em;
+            text-align: center;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        #profile {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            opacity: 0;
+            z-index: 2;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #clickToOpen {
+            z-index: 3;
+            cursor: pointer;
+        }
+        #audioPlayer {
+            visibility: hidden;
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+        .rainbow {
+            background-image: linear-gradient(90deg, violet, indigo, blue, green, yellow, orange, red, violet);
+            background-size: 200% 200%;
+            animation: rainbowAnimation 0.1s linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        @keyframes rainbowAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 50% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="overlay"></div>
+    <h1 onclick="openProfile()" id="clickToOpen">click to open profile</h1>
+    
+    <div id="profile">
+        <h1 class="rainbow">wrist.lol</h1>
+        <p style="letter-spacing: 0.5em;">private biolink</p>
+        <img src="https://cdn.discordapp.com/avatars/1157606773331607643/30413d9651f01137a414d6fb6712452a?size=1024" alt="Profile Picture">
+        <h2><span class="rainbow">$</span> khalifa <span class="rainbow">$</span></h2>
+        <p>dubai kid</p>
+        <p>band 4 band monarch</p>
+        <p>daddy's money</p>
+        <img src="https://staging.cohostcdn.org/attachment/c65fad14-ec7f-402e-89e4-cf2b64af07b0/yume1%5B1%5D.gif">
+    </div>
+
+    <audio controls id="audioPlayer" loop>
+        <source src="https://dl.sndup.net/kp7x/yt5scom%20-%20Pass%20Out%20(128%20kbps).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function openProfile() {
+            var clickToOpen = document.getElementById("clickToOpen");
+            clickToOpen.style.opacity = "0";
+            var overlay = document.getElementById("overlay");
+            overlay.style.opacity = "1";
+            setTimeout(function() {
+                clickToOpen.style.display = "none";
+                var profile = document.getElementById("profile");
+                profile.style.display = "block";
+                overlay.style.opacity = "0";
+                var audioPlayer = document.getElementById("audioPlayer");
+                audioPlayer.play();
+            }, 500);
+        }
+    </script>
+</body>
+</html>
